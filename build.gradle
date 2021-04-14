@@ -7,22 +7,26 @@ repositories {
     mavenCentral()
 }
 
+def allureVersion = "2.13.8",
+    selenideVersion = "5.19.0",
+    junitVersion = "5.7.1"
+
 dependencies {
-    testImplementation 'com.codeborne:selenide:5.19.0'
-    testImplementation "io.qameta.allure:allure-selenide:2.13.8"
-    testImplementation "org.junit.jupiter:junit-jupiter-api:5.7.1"
+    testImplementation "com.codeborne:selenide:$selenideVersion"
+    testImplementation "io.qameta.allure:allure-selenide:$allureVersion"
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$junitVersion"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine"
 }
 
 allure {
     autoconfigure = true
     aspectjweaver = true
-    version = '2.13.8'
+    version = "${allureVersion}"
 
     useJUnit5 {
-        version = '2.13.8'
+        version = "${allureVersion}"
     }
-    }
+}
 tasks.withType(JavaCompile) {
     options.encoding = "UTF-8"
 }
